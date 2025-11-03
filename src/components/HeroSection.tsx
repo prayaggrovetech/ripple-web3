@@ -57,12 +57,12 @@ export function HeroSection() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              <h1 className="text-5xl md:text-7xl lg:text-8xl xl:text-9xl font-black leading-[0.85] tracking-tighter">
+              <h1 className="text-5xl md:text-7xl lg:text-8xl xl:text-9xl font-space-grotesk font-bold leading-[0.85] tracking-tighter">
                 <span className="block text-foreground">RIPPLE</span>
                 <span className="block hero-title">FINANCE</span>
               </h1>
               
-              <p className="text-lg md:text-xl text-muted-foreground max-w-2xl leading-relaxed font-light">
+              <p className="text-lg md:text-xl text-muted-foreground max-w-2xl leading-relaxed font-plus-jakarta-sans font-light">
                 Next-generation decentralized finance platform. 
                 <span className="text-foreground font-medium"> Zero fees</span>, 
                 <span className="text-foreground font-medium"> infinite possibilities</span>.

@@ -61,7 +61,7 @@ export function ThemeShowcase() {
             <div className="w-1 h-1 bg-primary rounded-full animate-pulse" />
             <span className="text-xs text-muted-foreground mono tracking-widest uppercase">Platform Metrics</span>
           </div>
-          <h2 className="text-6xl md:text-7xl lg:text-8xl font-black leading-[0.85] tracking-tighter hero-title">
+          <h2 className="text-6xl md:text-7xl lg:text-8xl font-space-grotesk font-bold leading-[0.85] tracking-tighter hero-title">
             BUILT FOR
             <br />
             <span className="text-muted-foreground">PERFORMANCE</span>
