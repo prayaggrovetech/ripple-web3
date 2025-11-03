@@ -1,65 +1,338 @@
-import Image from "next/image";
+"use client";
+
+import { HeroSection } from "@/components/HeroSection";
+import { InvestingSection } from "@/components/InvestingSection";
+import { StepsSection } from "@/components/StepsSection";
+import { AchievementsSection } from "@/components/AchievementsSection";
+import { ChartSection } from "@/components/ChartSection";
+import { InvestSection } from "@/components/InvestSection";
+import { BecomeInvestorSection } from "@/components/BecomeInvestorSection";
+import { Footer } from "@/components/Footer";
+import { ThemeShowcase } from "@/components/ThemeShowcase";
+import NavbarHeader from "@/components/ui/resizable-navbar-demo";
+import { motion, Variants } from "framer-motion";
+import { useEffect, useState } from "react";
 
 export default function Home() {
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
+  // Modern 2025+ animation variants
+  const containerVariants: Variants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        duration: 0.4,
+        staggerChildren: 0.05
+      }
+    }
+  };
+
+  // Ultra-subtle section animations
+  const modernSectionVariants: Variants = {
+    hidden: {
+      opacity: 0,
+      y: 4
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.6,
+        ease: [0.16, 1, 0.3, 1]
+      }
+    }
+  };
+
+  // Minimal divider variants
+  const modernDividerVariants: Variants = {
+    hidden: { 
+      opacity: 0,
+      scaleX: 0.9
+    },
+    visible: {
+      opacity: 1,
+      scaleX: 1,
+      transition: {
+        duration: 0.8,
+        ease: [0.16, 1, 0.3, 1]
+      }
+    }
+  };
+
+  // Fallback for server-side rendering
+  if (!isClient) {
+    return (
+      <div className="w-full bg-background">
+        <NavbarHeader />
+        <main className="w-full">
+          <HeroSection />
+          <div className="py-16 flex justify-center"><div className="w-8 h-px bg-border/10" /></div>
+          <ThemeShowcase />
+          <div className="py-16 flex justify-center"><div className="w-8 h-px bg-border/10" /></div>
+          <InvestingSection />
+          <div className="py-16 flex justify-center"><div className="w-8 h-px bg-border/10" /></div>
+          <StepsSection />
+          <div className="py-16 flex justify-center"><div className="w-8 h-px bg-border/10" /></div>
+          <AchievementsSection />
+          <div className="py-16 flex justify-center"><div className="w-8 h-px bg-border/10" /></div>
+          <ChartSection />
+          <div className="py-16 flex justify-center"><div className="w-8 h-px bg-border/10" /></div>
+          <InvestSection />
+          <div className="py-16 flex justify-center"><div className="w-8 h-px bg-border/10" /></div>
+          <BecomeInvestorSection />
+          <div className="py-16 flex justify-center"><div className="w-8 h-px bg-border/10" /></div>
+          <Footer />
+        </main>
+      </div>
+    );
+  }
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
+    <motion.div
+      className="w-full bg-background overflow-x-hidden relative"
+      variants={containerVariants}
+      initial="hidden"
+      animate="visible"
+    >
+      {/* Ultra-minimal 2025+ Background */}
+      <div className="fixed inset-0 pointer-events-none">
+        {/* Single subtle grid */}
+        <div
+          className="absolute inset-0 opacity-[0.003]"
+          style={{
+            backgroundImage: `
+              linear-gradient(oklch(0.75 0.25 180) 0.5px, transparent 0.5px),
+              linear-gradient(90deg, oklch(0.75 0.25 180) 0.5px, transparent 0.5px)
+            `,
+            backgroundSize: '160px 160px'
+          }}
         />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+        
+        {/* Minimal ambient lighting */}
+        <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/[0.006] rounded-full blur-3xl" />
+        <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-accent/[0.004] rounded-full blur-3xl" />
+        
+        {/* Single floating indicator */}
+        <motion.div 
+          className="absolute top-1/3 right-1/6 w-0.5 h-0.5 bg-primary/30 rounded-full"
+          animate={{ 
+            opacity: [0.3, 0.7, 0.3]
+          }}
+          transition={{ 
+            duration: 6, 
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+        />
+      </div>
+
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.4, ease: "easeOut" }}
+      >
+        <NavbarHeader />
+      </motion.div>
+
+      {/* Main content with ultra-minimal spacing */}
+      <motion.main
+        className="w-full overflow-x-hidden relative z-10"
+        variants={containerVariants}
+      >
+        <motion.div variants={modernSectionVariants}>
+          <HeroSection />
+        </motion.div>
+
+        <motion.div
+          className="py-20 flex justify-center"
+          variants={modernDividerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-50px" }}
+        >
+          <div className="w-8 h-px bg-border/15" />
+        </motion.div>
+
+        <motion.div
+          variants={modernSectionVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-50px" }}
+        >
+          <ThemeShowcase />
+        </motion.div>
+
+        <motion.div
+          className="py-20 flex justify-center"
+          variants={modernDividerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-50px" }}
+        >
+          <div className="w-8 h-px bg-border/15" />
+        </motion.div>
+
+        <motion.div
+          variants={modernSectionVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-50px" }}
+        >
+          <InvestingSection />
+        </motion.div>
+
+        <motion.div
+          className="py-20 flex justify-center"
+          variants={modernDividerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-50px" }}
+        >
+          <div className="w-8 h-px bg-border/15" />
+        </motion.div>
+
+        <motion.div
+          variants={modernSectionVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-50px" }}
+        >
+          <StepsSection />
+        </motion.div>
+
+        <motion.div
+          className="py-20 flex justify-center"
+          variants={modernDividerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-50px" }}
+        >
+          <div className="w-8 h-px bg-border/15" />
+        </motion.div>
+
+        <motion.div
+          variants={modernSectionVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-50px" }}
+        >
+          <AchievementsSection />
+        </motion.div>
+
+        <motion.div
+          className="py-20 flex justify-center"
+          variants={modernDividerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-50px" }}
+        >
+          <div className="w-8 h-px bg-border/15" />
+        </motion.div>
+
+        <motion.div
+          variants={modernSectionVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-50px" }}
+        >
+          <ChartSection />
+        </motion.div>
+
+        <motion.div
+          className="py-20 flex justify-center"
+          variants={modernDividerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-50px" }}
+        >
+          <div className="w-8 h-px bg-border/15" />
+        </motion.div>
+
+        <motion.div
+          variants={modernSectionVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-50px" }}
+        >
+          <InvestSection />
+        </motion.div>
+
+        <motion.div
+          className="py-20 flex justify-center"
+          variants={modernDividerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-50px" }}
+        >
+          <div className="w-8 h-px bg-border/15" />
+        </motion.div>
+
+        <motion.div
+          variants={modernSectionVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-50px" }}
+        >
+          <BecomeInvestorSection />
+        </motion.div>
+
+        <motion.div
+          className="py-20 flex justify-center"
+          variants={modernDividerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-50px" }}
+        >
+          <div className="w-8 h-px bg-border/15" />
+        </motion.div>
+
+        <motion.div
+          variants={modernSectionVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-50px" }}
+        >
+          <Footer />
+        </motion.div>
+      </motion.main>
+
+      {/* Minimal progress indicator */}
+      <motion.div
+        className="fixed right-6 top-1/2 -translate-y-1/2 z-50 hidden lg:block"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.6, delay: 0.8 }}
+      >
+        <div className="w-px h-24 bg-border/10 relative">
+          <motion.div
+            className="absolute top-0 left-0 w-px bg-primary/30"
+            animate={{ height: ["0%", "100%"] }}
+            transition={{ duration: 12, repeat: Infinity, ease: "linear" }}
+          />
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+      </motion.div>
+
+      {/* Minimal status indicator */}
+      <motion.div
+        className="fixed bottom-6 left-6 z-50 hidden md:block"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.6, delay: 1.2 }}
+      >
+        <div className="flex items-center space-x-2 text-xs text-muted-foreground/40">
+          <motion.div 
+            className="w-1 h-1 bg-success/50 rounded-full"
+            animate={{ opacity: [0.5, 1, 0.5] }}
+            transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+          />
+          <span className="mono text-[10px]">LIVE</span>
         </div>
-      </main>
-    </div>
+      </motion.div>
+    </motion.div>
   );
 }
