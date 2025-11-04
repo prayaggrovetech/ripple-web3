@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Plus_Jakarta_Sans, Space_Grotesk, JetBrains_Mono } from "next/font/google";
+import { Web3Provider } from "@/components/providers/Web3Provider";
 import "./globals.css";
 
 // Plus Jakarta Sans - Modern, clean body font (similar to Satoshi)
