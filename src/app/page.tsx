@@ -114,12 +114,12 @@ export default function Home() {
     }
   };
 
-  // Fallback for server-side rendering
+  // Responsive fallback for server-side rendering
   if (!isClient) {
     return (
       <div className="w-full bg-background">
         <NavbarHeader />
-        <main className="w-full">
+        <main className="w-full px-4 sm:px-8 md:px-16 lg:px-24 xl:px-32 2xl:px-40">
           <HeroSection />
           <div className="py-16 flex justify-center"><div className="w-8 h-px bg-border/10" /></div>
           <ThemeShowcase />
@@ -164,9 +164,9 @@ export default function Home() {
           }}
         />
 
-        {/* Enhanced Interactive Vertical Ruler Lines */}
+        {/* Enhanced Interactive Vertical Ruler Lines - Responsive */}
         <motion.div 
-          className={`absolute inset-y-0 left-8 md:left-16 lg:left-24 w-px bg-border shadow-sm grid-line-vertical ${
+          className={`absolute inset-y-0 left-2 sm:left-4 md:left-8 lg:left-16 xl:left-24 w-px bg-border shadow-sm grid-line-vertical ${
             isClient && ['hero', 'features', 'investing'].includes(activeSection) ? 'active' : ''
           }`}
           initial={{ scaleY: 0, opacity: 0 }}
@@ -175,7 +175,7 @@ export default function Home() {
           style={{ transformOrigin: 'top' }}
         />
         <motion.div 
-          className={`absolute inset-y-0 right-8 md:right-16 lg:right-24 w-px bg-border shadow-sm grid-line-vertical ${
+          className={`absolute inset-y-0 right-2 sm:right-4 md:right-8 lg:right-16 xl:right-24 w-px bg-border shadow-sm grid-line-vertical ${
             isClient && ['charts', 'invest', 'community'].includes(activeSection) ? 'active' : ''
           }`}
           initial={{ scaleY: 0, opacity: 0 }}
@@ -184,8 +184,8 @@ export default function Home() {
           style={{ transformOrigin: 'top' }}
         />
 
-        {/* Enhanced Animated Ruler Tick Marks - Left */}
-        <div className="absolute left-8 md:left-16 lg:left-24 top-0 h-full">
+        {/* Enhanced Animated Ruler Tick Marks - Left - Responsive */}
+        <div className="absolute left-2 sm:left-4 md:left-8 lg:left-16 xl:left-24 top-0 h-full">
           {Array.from({ length: 8 }).map((_, i) => {
             const tickProgress = isClient ? scrollProgress * 8 : 0;
             const isActive = tickProgress > i;
@@ -194,7 +194,7 @@ export default function Home() {
             return (
               <motion.div
                 key={`left-tick-${i}`}
-                className={`absolute w-4 h-px bg-border grid-tick-left ${
+                className={`absolute w-2 sm:w-3 md:w-4 h-px bg-border grid-tick-left ${
                   isActive ? 'active' : ''
                 } ${isProgress ? 'progress' : ''}`}
                 style={{ top: `${10 + (i * 10)}%` }}
@@ -215,8 +215,8 @@ export default function Home() {
           })}
         </div>
 
-        {/* Enhanced Animated Ruler Tick Marks - Right */}
-        <div className="absolute right-8 md:right-16 lg:right-24 top-0 h-full">
+        {/* Enhanced Animated Ruler Tick Marks - Right - Responsive */}
+        <div className="absolute right-2 sm:right-4 md:right-8 lg:right-16 xl:right-24 top-0 h-full">
           {Array.from({ length: 8 }).map((_, i) => {
             const tickProgress = isClient ? scrollProgress * 8 : 0;
             const isActive = tickProgress > i;
@@ -225,7 +225,7 @@ export default function Home() {
             return (
               <motion.div
                 key={`right-tick-${i}`}
-                className={`absolute w-4 h-px bg-border -translate-x-4 grid-tick-right ${
+                className={`absolute w-2 sm:w-3 md:w-4 h-px bg-border -translate-x-2 sm:-translate-x-3 md:-translate-x-4 grid-tick-right ${
                   isActive ? 'active' : ''
                 } ${isProgress ? 'progress' : ''}`}
                 style={{ top: `${10 + (i * 10)}%` }}
@@ -260,10 +260,10 @@ export default function Home() {
           return (
             <motion.div
               key={`marker-${i}`}
-              className={`absolute w-2 h-2 bg-${marker.color} rounded-full grid-intersection-marker ${
+              className={`absolute w-1.5 h-1.5 sm:w-2 sm:h-2 bg-${marker.color} rounded-full grid-intersection-marker ${
                 marker.left 
-                  ? 'left-8 md:left-16 lg:left-24 -translate-x-1' 
-                  : 'right-8 md:right-16 lg:right-24 translate-x-1'
+                  ? 'left-2 sm:left-4 md:left-8 lg:left-16 xl:left-24 -translate-x-1' 
+                  : 'right-2 sm:right-4 md:right-8 lg:right-16 xl:right-24 translate-x-1'
               } ${marker.top === '70%' ? 'translate-y-1' : '-translate-y-1'} ${
                 isActive ? 'active' : ''
               }`}
@@ -287,13 +287,13 @@ export default function Home() {
         {/* Dynamic Clickable Section Labels */}
 
 
-        {/* Minimal ambient lighting */}
-        <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/[0.006] rounded-full blur-3xl" />
-        <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-accent/[0.004] rounded-full blur-3xl" />
+        {/* Responsive ambient lighting */}
+        <div className="absolute top-0 left-1/4 w-48 sm:w-64 md:w-80 lg:w-96 h-48 sm:h-64 md:h-80 lg:h-96 bg-primary/[0.006] rounded-full blur-2xl sm:blur-3xl" />
+        <div className="absolute bottom-0 right-1/4 w-40 sm:w-56 md:w-72 lg:w-80 h-40 sm:h-56 md:h-72 lg:h-80 bg-accent/[0.004] rounded-full blur-2xl sm:blur-3xl" />
         
-        {/* Single floating indicator */}
+        {/* Responsive floating indicator */}
         <motion.div 
-          className="absolute top-1/3 right-1/6 w-0.5 h-0.5 bg-primary/30 rounded-full"
+          className="absolute top-1/3 right-1/6 w-0.5 h-0.5 sm:w-1 sm:h-1 bg-primary/30 rounded-full hidden sm:block"
           animate={{ 
             opacity: [0.3, 0.7, 0.3]
           }}
@@ -313,9 +313,9 @@ export default function Home() {
         <NavbarHeader />
       </motion.div>
 
-      {/* Main content with clean spacing - symmetric ruler clearance */}
+      {/* Main content with responsive spacing - symmetric ruler clearance */}
       <motion.main
-        className="w-full relative z-10 px-24 md:px-32 lg:px-40 grid-content"
+        className="w-full relative z-10 px-4 sm:px-8 md:px-16 lg:px-24 xl:px-32 2xl:px-40 grid-content"
         variants={containerVariants}
       >
         <motion.div 
@@ -487,14 +487,14 @@ export default function Home() {
         </motion.div>
       </motion.main>
 
-      {/* Minimal progress indicator */}
+      {/* Responsive progress indicator */}
       <motion.div
-        className="fixed right-6 top-1/2 -translate-y-1/2 z-50 hidden lg:block"
+        className="fixed right-3 sm:right-4 md:right-6 top-1/2 -translate-y-1/2 z-50 hidden md:block"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.6, delay: 0.8 }}
       >
-        <div className="w-px h-24 bg-border/10 relative">
+        <div className="w-px h-16 sm:h-20 md:h-24 bg-border/10 relative">
           <motion.div
             className="absolute top-0 left-0 w-px bg-primary/30"
             animate={{ height: ["0%", "100%"] }}
@@ -503,20 +503,20 @@ export default function Home() {
         </div>
       </motion.div>
 
-      {/* Minimal status indicator */}
+      {/* Responsive status indicator */}
       <motion.div
-        className="fixed bottom-6 left-6 z-50 hidden md:block"
+        className="fixed bottom-4 sm:bottom-6 left-3 sm:left-4 md:left-6 z-50 hidden sm:block"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.6, delay: 1.2 }}
       >
-        <div className="flex items-center space-x-2 text-xs text-muted-foreground/40">
+        <div className="flex items-center space-x-1.5 sm:space-x-2 text-xs text-muted-foreground/40">
           <motion.div 
             className="w-1 h-1 bg-success/50 rounded-full"
             animate={{ opacity: [0.5, 1, 0.5] }}
             transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
           />
-          <span className="mono text-[10px]">LIVE</span>
+          <span className="mono text-[9px] sm:text-[10px]">LIVE</span>
         </div>
       </motion.div>
     </motion.div>
