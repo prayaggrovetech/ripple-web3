@@ -62,7 +62,7 @@ export function Footer() {
         {/* Bottom Section */}
         <div className="mt-16 pt-8 border-t border-border flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
           <div className="text-muted-foreground text-sm mono">
-            © 2024 Ripple Protocol. Decentralized & Open Source.
+            © 2025 Ripple Protocol. Decentralized & Open Source.
           </div>
           <div className="flex space-x-6">
             <a href="#" className="text-muted-foreground text-sm hover:text-primary transition-colors mono">Privacy</a>
