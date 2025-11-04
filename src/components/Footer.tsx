@@ -5,7 +5,7 @@ export function Footer() {
 
         {/* Large Brand Name */}
         <div className="mb-16">
-          <h1 className="text-8xl md:text-9xl lg:text-[28rem] font-black hero-title leading-none tracking-tighter">
+          <h1 className="text-8xl md:text-9xl lg:text-[32rem] text-center font-space-grotesk font-bold leading-none tracking-tighter footer-brand-simple">
             RIPPLE
           </h1>
         </div>

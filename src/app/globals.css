@@ -179,6 +179,19 @@
   background-clip: text;
 }
 
+/* Clean footer brand styling */
+.footer-brand-simple {
+  background: linear-gradient(
+    180deg,
+    oklch(0.95 0.01 240) 0%,
+    oklch(0.75 0.25 180) 60%,
+    oklch(0.60 0.02 240) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
 /* Crypto-style monospace font for numbers and addresses */
 .mono {
   font-family: var(--font-jetbrains-mono), 'Fira Code', 'Monaco', 'Consolas', monospace;
