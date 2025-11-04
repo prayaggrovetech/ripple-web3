@@ -133,7 +133,7 @@ export function HeroSection() {
             >
               <Button
                 size="lg"
-                className="bg-foreground text-background hover:bg-foreground/90 px-8 py-4 text-base font-semibold rounded-xl transition-all duration-300 hover:scale-105"
+                className="bg-foreground text-background hover:bg-foreground/90 px-8 py-4 text-base font-semibold rounded-xl btn-glow focus-enhanced"
               >
                 Launch App
                 <ArrowRight size={18} className="ml-2" />

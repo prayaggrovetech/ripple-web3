@@ -133,7 +133,7 @@ export function ThemeShowcase() {
         <div className="text-center mt-20">
           <div className="inline-flex flex-col items-center space-y-6">
             <Button
-              className="bg-foreground text-background hover:bg-foreground/90 px-12 py-4 text-sm font-medium mono tracking-wider uppercase rounded-none border-0 transition-all duration-300 hover:scale-105"
+              className="bg-foreground text-background hover:bg-foreground/90 px-12 py-4 text-sm font-medium mono tracking-wider uppercase rounded-none border-0 btn-glow focus-enhanced"
             >
               Access Platform
             </Button>

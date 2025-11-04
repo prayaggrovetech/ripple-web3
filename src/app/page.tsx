@@ -11,15 +11,62 @@ import { Footer } from "@/components/Footer";
 import { ThemeShowcase } from "@/components/ThemeShowcase";
 import NavbarHeader from "@/components/ui/resizable-navbar-demo";
 import { motion, Variants } from "framer-motion";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 
 
 export default function Home() {
   const [isClient, setIsClient] = useState(false);
+  const [activeSection, setActiveSection] = useState('hero');
+  const [scrollProgress, setScrollProgress] = useState(0);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     setIsClient(true);
   }, []);
+
+  // Enhanced scroll tracking for ruler system
+  useEffect(() => {
+    if (!isClient) return;
+
+    const handleScroll = () => {
+      const scrollY = window.scrollY;
+      const windowHeight = window.innerHeight;
+      const documentHeight = document.documentElement.scrollHeight - windowHeight;
+      const progress = Math.min(scrollY / documentHeight, 1);
+      setScrollProgress(progress);
+
+      // Determine active section for ruler glow
+      const sections = ['hero', 'features', 'investing', 'steps', 'achievements', 'charts', 'invest', 'community'];
+      const sectionElements = sections.map(id => document.getElementById(id));
+      
+      let currentSection = 'hero';
+      sectionElements.forEach((element, index) => {
+        if (element) {
+          const rect = element.getBoundingClientRect();
+          if (rect.top <= windowHeight / 2 && rect.bottom >= windowHeight / 2) {
+            currentSection = sections[index];
+          }
+        }
+      });
+      
+      setActiveSection(currentSection);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
+    
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [isClient]);
+
+  // Background gradient class based on scroll
+  const getScrollGradientClass = () => {
+    if (!isClient) return 'scroll-0';
+    if (scrollProgress < 0.2) return 'scroll-0';
+    if (scrollProgress < 0.4) return 'scroll-25';
+    if (scrollProgress < 0.6) return 'scroll-50';
+    if (scrollProgress < 0.8) return 'scroll-75';
+    return 'scroll-100';
+  };
 
   // Modern 2025+ animation variants
   const containerVariants: Variants = {
@@ -33,17 +80,19 @@ export default function Home() {
     }
   };
 
-  // Ultra-subtle section animations
+  // Enhanced section animations with smooth transitions
   const modernSectionVariants: Variants = {
     hidden: {
       opacity: 0,
-      y: 4
+      y: 8,
+      scale: 0.98
     },
     visible: {
       opacity: 1,
       y: 0,
+      scale: 1,
       transition: {
-        duration: 0.6,
+        duration: 0.8,
         ease: [0.16, 1, 0.3, 1]
       }
     }
@@ -95,7 +144,8 @@ export default function Home() {
 
   return (
     <motion.div
-      className="w-full bg-background relative"
+      ref={containerRef}
+      className={`w-full bg-background relative scroll-gradient ${getScrollGradientClass()}`}
       variants={containerVariants}
       initial="hidden"
       animate="visible"
@@ -114,99 +164,125 @@ export default function Home() {
           }}
         />
 
-        {/* Interactive Vertical Ruler Lines */}
+        {/* Enhanced Interactive Vertical Ruler Lines */}
         <motion.div 
-          className="absolute inset-y-0 left-8 md:left-16 lg:left-24 w-px bg-border shadow-sm grid-line-vertical"
+          className={`absolute inset-y-0 left-8 md:left-16 lg:left-24 w-px bg-border shadow-sm grid-line-vertical ${
+            isClient && ['hero', 'features', 'investing'].includes(activeSection) ? 'active' : ''
+          }`}
           initial={{ scaleY: 0, opacity: 0 }}
           animate={{ scaleY: 1, opacity: 1 }}
           transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.5 }}
           style={{ transformOrigin: 'top' }}
         />
         <motion.div 
-          className="absolute inset-y-0 right-8 md:right-16 lg:right-24 w-px bg-border shadow-sm grid-line-vertical"
+          className={`absolute inset-y-0 right-8 md:right-16 lg:right-24 w-px bg-border shadow-sm grid-line-vertical ${
+            isClient && ['charts', 'invest', 'community'].includes(activeSection) ? 'active' : ''
+          }`}
           initial={{ scaleY: 0, opacity: 0 }}
           animate={{ scaleY: 1, opacity: 1 }}
           transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.7 }}
           style={{ transformOrigin: 'top' }}
         />
 
-        {/* Animated Ruler Tick Marks - Left */}
+        {/* Enhanced Animated Ruler Tick Marks - Left */}
         <div className="absolute left-8 md:left-16 lg:left-24 top-0 h-full">
-          {Array.from({ length: 8 }).map((_, i) => (
-            <motion.div
-              key={`left-tick-${i}`}
-              className="absolute w-4 h-px bg-border grid-tick-left"
-              style={{ top: `${10 + (i * 10)}%` }}
-              initial={{ scaleX: 0, opacity: 0 }}
-              animate={{ scaleX: 1, opacity: 1 }}
-              transition={{ 
-                duration: 0.4, 
-                ease: [0.16, 1, 0.3, 1], 
-                delay: 1.8 + (i * 0.1) 
-              }}
-              whileHover={{ 
-                scaleX: 1.5, 
-                backgroundColor: 'oklch(0.75 0.25 180)',
-                transition: { duration: 0.2 }
-              }}
-            />
-          ))}
+          {Array.from({ length: 8 }).map((_, i) => {
+            const tickProgress = isClient ? scrollProgress * 8 : 0;
+            const isActive = tickProgress > i;
+            const isProgress = tickProgress > i && tickProgress < i + 1;
+            
+            return (
+              <motion.div
+                key={`left-tick-${i}`}
+                className={`absolute w-4 h-px bg-border grid-tick-left ${
+                  isActive ? 'active' : ''
+                } ${isProgress ? 'progress' : ''}`}
+                style={{ top: `${10 + (i * 10)}%` }}
+                initial={{ scaleX: 0, opacity: 0 }}
+                animate={{ scaleX: 1, opacity: 1 }}
+                transition={{ 
+                  duration: 0.4, 
+                  ease: [0.16, 1, 0.3, 1], 
+                  delay: 1.8 + (i * 0.1) 
+                }}
+                whileHover={{ 
+                  scaleX: 1.5, 
+                  backgroundColor: 'oklch(0.75 0.25 180)',
+                  transition: { duration: 0.2 }
+                }}
+              />
+            );
+          })}
         </div>
 
-        {/* Animated Ruler Tick Marks - Right */}
+        {/* Enhanced Animated Ruler Tick Marks - Right */}
         <div className="absolute right-8 md:right-16 lg:right-24 top-0 h-full">
-          {Array.from({ length: 8 }).map((_, i) => (
+          {Array.from({ length: 8 }).map((_, i) => {
+            const tickProgress = isClient ? scrollProgress * 8 : 0;
+            const isActive = tickProgress > i;
+            const isProgress = tickProgress > i && tickProgress < i + 1;
+            
+            return (
+              <motion.div
+                key={`right-tick-${i}`}
+                className={`absolute w-4 h-px bg-border -translate-x-4 grid-tick-right ${
+                  isActive ? 'active' : ''
+                } ${isProgress ? 'progress' : ''}`}
+                style={{ top: `${10 + (i * 10)}%` }}
+                initial={{ scaleX: 0, opacity: 0 }}
+                animate={{ scaleX: 1, opacity: 1 }}
+                transition={{ 
+                  duration: 0.4, 
+                  ease: [0.16, 1, 0.3, 1], 
+                  delay: 1.8 + (i * 0.1) 
+                }}
+                whileHover={{ 
+                  scaleX: 1.5, 
+                  backgroundColor: 'oklch(0.75 0.25 180)',
+                  transition: { duration: 0.2 }
+                }}
+              />
+            );
+          })}
+        </div>
+
+        {/* Enhanced Animated Intersection Markers */}
+        {[
+          { top: '10%', left: true, color: 'primary', delay: 2.2, section: 'hero' },
+          { top: '10%', left: false, color: 'primary', delay: 2.3, section: 'hero' },
+          { top: '40%', left: true, color: 'accent', delay: 2.4, section: 'steps' },
+          { top: '40%', left: false, color: 'accent', delay: 2.5, section: 'steps' },
+          { top: '70%', left: true, color: 'success', delay: 2.6, section: 'invest' },
+          { top: '70%', left: false, color: 'success', delay: 2.7, section: 'invest' }
+        ].map((marker, i) => {
+          const isActive = isClient && activeSection === marker.section;
+          
+          return (
             <motion.div
-              key={`right-tick-${i}`}
-              className="absolute w-4 h-px bg-border -translate-x-4 grid-tick-right"
-              style={{ top: `${10 + (i * 10)}%` }}
-              initial={{ scaleX: 0, opacity: 0 }}
-              animate={{ scaleX: 1, opacity: 1 }}
+              key={`marker-${i}`}
+              className={`absolute w-2 h-2 bg-${marker.color} rounded-full grid-intersection-marker ${
+                marker.left 
+                  ? 'left-8 md:left-16 lg:left-24 -translate-x-1' 
+                  : 'right-8 md:right-16 lg:right-24 translate-x-1'
+              } ${marker.top === '70%' ? 'translate-y-1' : '-translate-y-1'} ${
+                isActive ? 'active' : ''
+              }`}
+              style={{ top: marker.top }}
+              initial={{ scale: 0, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
               transition={{ 
-                duration: 0.4, 
+                duration: 0.5, 
                 ease: [0.16, 1, 0.3, 1], 
-                delay: 1.8 + (i * 0.1) 
+                delay: marker.delay 
               }}
               whileHover={{ 
-                scaleX: 1.5, 
-                backgroundColor: 'oklch(0.75 0.25 180)',
+                scale: 1.5,
+                boxShadow: `0 0 20px oklch(0.75 0.25 180 / 0.5)`,
                 transition: { duration: 0.2 }
               }}
             />
-          ))}
-        </div>
-
-        {/* Animated Intersection Markers */}
-        {[
-          { top: '10%', left: true, color: 'primary', delay: 2.2 },
-          { top: '10%', left: false, color: 'primary', delay: 2.3 },
-          { top: '40%', left: true, color: 'accent', delay: 2.4 },
-          { top: '40%', left: false, color: 'accent', delay: 2.5 },
-          { top: '70%', left: true, color: 'success', delay: 2.6 },
-          { top: '70%', left: false, color: 'success', delay: 2.7 }
-        ].map((marker, i) => (
-          <motion.div
-            key={`marker-${i}`}
-            className={`absolute w-2 h-2 bg-${marker.color} rounded-full grid-intersection-marker ${
-              marker.left 
-                ? 'left-8 md:left-16 lg:left-24 -translate-x-1' 
-                : 'right-8 md:right-16 lg:right-24 translate-x-1'
-            } ${marker.top === '70%' ? 'translate-y-1' : '-translate-y-1'}`}
-            style={{ top: marker.top }}
-            initial={{ scale: 0, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ 
-              duration: 0.5, 
-              ease: [0.16, 1, 0.3, 1], 
-              delay: marker.delay 
-            }}
-            whileHover={{ 
-              scale: 1.5,
-              boxShadow: `0 0 20px oklch(0.75 0.25 180 / 0.5)`,
-              transition: { duration: 0.2 }
-            }}
-          />
-        ))}
+          );
+        })}
 
         {/* Dynamic Clickable Section Labels */}
 
@@ -242,7 +318,11 @@ export default function Home() {
         className="w-full relative z-10 px-24 md:px-32 lg:px-40 grid-content"
         variants={containerVariants}
       >
-        <motion.div variants={modernSectionVariants} id="hero">
+        <motion.div 
+          variants={modernSectionVariants} 
+          id="hero"
+          className="section-transition"
+        >
           <HeroSection />
         </motion.div>
 

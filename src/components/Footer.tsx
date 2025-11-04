@@ -52,17 +52,17 @@ export function Footer() {
 
           {/* Essential Links */}
           <div className="flex flex-wrap gap-x-8 gap-y-4">
-            <a href="#" className="footer-link text-muted-foreground text-sm hover:text-primary transition-all duration-300 mono">Trade</a>
-            <a href="#" className="footer-link text-muted-foreground text-sm hover:text-primary transition-all duration-300 mono">Stake</a>
-            <a href="#" className="footer-link text-muted-foreground text-sm hover:text-primary transition-all duration-300 mono">Docs</a>
-            <a href="#" className="footer-link text-muted-foreground text-sm hover:text-primary transition-all duration-300 mono">Discord</a>
-            <a href="#" className="footer-link text-muted-foreground text-sm hover:text-primary transition-all duration-300 mono">Twitter</a>
+            <a href="#" className="footer-link text-muted-foreground text-sm hover:text-primary transition-all duration-300 mono focus-enhanced">Trade</a>
+            <a href="#" className="footer-link text-muted-foreground text-sm hover:text-primary transition-all duration-300 mono focus-enhanced">Stake</a>
+            <a href="#" className="footer-link text-muted-foreground text-sm hover:text-primary transition-all duration-300 mono focus-enhanced">Docs</a>
+            <a href="#" className="footer-link text-muted-foreground text-sm hover:text-primary transition-all duration-300 mono focus-enhanced">Discord</a>
+            <a href="#" className="footer-link text-muted-foreground text-sm hover:text-primary transition-all duration-300 mono focus-enhanced">Twitter</a>
           </div>
 
           {/* Legal Links */}
           <div className="flex gap-6">
-            <a href="#" className="footer-link text-muted-foreground text-xs hover:text-primary transition-all duration-300 mono">Privacy</a>
-            <a href="#" className="footer-link text-muted-foreground text-xs hover:text-primary transition-all duration-300 mono">Terms</a>
+            <a href="#" className="footer-link text-muted-foreground text-xs hover:text-primary transition-all duration-300 mono focus-enhanced">Privacy</a>
+            <a href="#" className="footer-link text-muted-foreground text-xs hover:text-primary transition-all duration-300 mono focus-enhanced">Terms</a>
           </div>
         </div>
 
