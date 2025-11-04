@@ -1,14 +1,32 @@
+import { HyperText } from "@/components/ui/hyper-text";
+
 export function BecomeInvestorSection() {
   return (
-    <section className="px-4 py-16 md:px-8 md:py-24 glass">
-      <div className="mx-auto">
+    <section className="py-16 md:py-24 glass">
+      <div className="mx-auto max-w-7xl">
 
         {/* Main Heading - Centered */}
         <div className="text-center mb-16">
-          <h1 className="text-6xl md:text-7xl lg:text-8xl font-black leading-none tracking-tight hero-title">
-            BECOME <span className="text-muted-foreground">a</span><br />
-            DEFI TRADER
-          </h1>
+          <div className="text-6xl md:text-7xl lg:text-8xl font-black leading-none tracking-tight">
+            <HyperText 
+              as="h1"
+              className="hero-title text-6xl md:text-7xl lg:text-8xl font-black leading-none tracking-tight py-0"
+              startOnView={false}
+              duration={800}
+              animateOnHover={true}
+            >
+              BECOME A
+            </HyperText>
+            <HyperText 
+              as="span"
+              className="hero-title text-6xl md:text-7xl lg:text-8xl font-black leading-none tracking-tight py-0 block"
+              startOnView={false}
+              duration={800}
+              animateOnHover={true}
+            >
+              DEFI TRADER
+            </HyperText>
+          </div>
         </div>
 
         {/* Content Grid */}

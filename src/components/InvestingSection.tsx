@@ -1,6 +1,6 @@
 export function InvestingSection() {
   return (
-    <section className="px-4 py-16 md:px-8 md:py-24 glass rounded-3xl mx-2 glow">
+    <section className="py-16 md:py-24 glass rounded-3xl glow">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Left Content */}

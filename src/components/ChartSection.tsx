@@ -1,6 +1,7 @@
 "use client";
 
 import { LineChart, Line, XAxis, YAxis, ResponsiveContainer, ReferenceLine, LabelList } from 'recharts';
+import { HyperText } from "@/components/ui/hyper-text";
 
 export function ChartSection() {
   // Realistic 5-year growth data for Bitcoin and Ethereum (simplified)
@@ -66,16 +67,22 @@ export function ChartSection() {
   };
 
   return (
-    <section className="rounded-3xl mx-2 px-4 py-16 md:px-8 md:py-24 glass glow">
+    <section className="rounded-3xl py-16 md:py-24 glass glow">
       {/* Header Section */}
-      <div className="mx-auto">
+      <div className="mx-auto max-w-7xl">
         <div className="rounded-3xl p-8 md:p-12 relative overflow-hidden">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start mb-16">
             {/* Left - Main Heading */}
             <div>
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-black leading-[0.9] tracking-tight hero-title">
+              <HyperText 
+                as="h2"
+                className="text-3xl md:text-4xl lg:text-5xl font-black leading-[0.9] tracking-tight hero-title py-0"
+                startOnView={false}
+                duration={1200}
+                animateOnHover={true}
+              >
                 WHAT IF YOU HAD BOUGHT BITCOIN OR ETHEREUM 5 YEARS AGO?
-              </h2>
+              </HyperText>
             </div>
 
             {/* Right - Subheading */}
@@ -92,14 +99,14 @@ export function ChartSection() {
 
       {/* Full Screen Width Chart */}
       <div className="relative w-full">
-        <div className="relative h-[500px] md:h-[600px] px-4 md:px-8">
+        <div className="relative h-[500px] md:h-[600px]">
           {/* Y-axis label */}
-          <div className="absolute left-4 top-1/2 transform -translate-y-1/2 -rotate-90 z-10">
+          <div className="absolute left-8 top-1/2 transform -translate-y-1/2 -rotate-90 z-10">
             <span className="text-muted-foreground text-sm font-medium uppercase tracking-wider mono">Price Growth</span>
           </div>
 
           {/* Chart Container */}
-          <div className="ml-12 mr-8 h-full">
+          <div className="ml-16 mr-8 h-full">
             <ResponsiveContainer width="100%" height="100%">
               <LineChart data={data} margin={{ top: 60, right: 100, left: 40, bottom: 60 }}>
                 {/* Grid lines */}

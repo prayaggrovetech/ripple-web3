@@ -46,7 +46,7 @@
 
 :root {
   --radius: 0.75rem;
-  
+
   /* Ultra-modern Web3 crypto theme - Dark by default */
   --background: oklch(0.08 0.01 240);
   --foreground: oklch(0.98 0.01 240);
@@ -54,34 +54,44 @@
   --card-foreground: oklch(0.95 0.01 240);
   --popover: oklch(0.10 0.015 240);
   --popover-foreground: oklch(0.98 0.01 240);
-  
+
   /* Crypto-inspired accent colors */
-  --primary: oklch(0.75 0.25 180); /* Cyan/Teal for crypto feel */
+  --primary: oklch(0.75 0.25 180);
+  /* Cyan/Teal for crypto feel */
   --primary-foreground: oklch(0.08 0.01 240);
   --secondary: oklch(0.18 0.02 240);
   --secondary-foreground: oklch(0.85 0.01 240);
   --muted: oklch(0.15 0.015 240);
   --muted-foreground: oklch(0.65 0.01 240);
-  --accent: oklch(0.70 0.30 280); /* Purple accent for Web3 */
+  --accent: oklch(0.70 0.30 280);
+  /* Purple accent for Web3 */
   --accent-foreground: oklch(0.08 0.01 240);
-  
+
   /* Status colors */
-  --success: oklch(0.70 0.25 140); /* Green for gains */
-  --warning: oklch(0.75 0.25 60); /* Amber for caution */
-  --destructive: oklch(0.65 0.25 20); /* Red for losses */
-  
+  --success: oklch(0.70 0.25 140);
+  /* Green for gains */
+  --warning: oklch(0.75 0.25 60);
+  /* Amber for caution */
+  --destructive: oklch(0.65 0.25 20);
+  /* Red for losses */
+
   /* Borders and inputs */
   --border: oklch(0.20 0.02 240);
   --input: oklch(0.15 0.015 240);
   --ring: oklch(0.75 0.25 180);
-  
+
   /* Chart colors for crypto data */
-  --chart-1: oklch(0.75 0.25 180); /* Cyan */
-  --chart-2: oklch(0.70 0.30 280); /* Purple */
-  --chart-3: oklch(0.70 0.25 140); /* Green */
-  --chart-4: oklch(0.75 0.25 60); /* Amber */
-  --chart-5: oklch(0.65 0.25 20); /* Red */
-  
+  --chart-1: oklch(0.75 0.25 180);
+  /* Cyan */
+  --chart-2: oklch(0.70 0.30 280);
+  /* Purple */
+  --chart-3: oklch(0.70 0.25 140);
+  /* Green */
+  --chart-4: oklch(0.75 0.25 60);
+  /* Amber */
+  --chart-5: oklch(0.65 0.25 20);
+  /* Red */
+
   /* Sidebar */
   --sidebar: oklch(0.10 0.015 240);
   --sidebar-foreground: oklch(0.95 0.01 240);
@@ -119,20 +129,20 @@
     @apply border-border outline-ring/50;
     box-sizing: border-box;
   }
-  
+
   /* Prevent framer-motion animations from causing overflow */
   #__next,
   [data-reactroot] {
     overflow-x: hidden !important;
   }
-  
+
   html {
     scroll-behavior: smooth;
     overflow-x: hidden;
     width: 100%;
     height: 100%;
   }
-  
+
   body {
     @apply bg-background text-foreground antialiased;
     font-feature-settings: "cv02", "cv03", "cv04", "cv11";
@@ -142,21 +152,21 @@
     height: 100%;
     position: relative;
   }
-  
+
   /* Custom scrollbar for dark theme */
   body::-webkit-scrollbar {
     width: 8px;
   }
-  
+
   body::-webkit-scrollbar-track {
     background: oklch(0.08 0.01 240);
   }
-  
+
   body::-webkit-scrollbar-thumb {
     background: oklch(0.20 0.02 240);
     border-radius: 4px;
   }
-  
+
   body::-webkit-scrollbar-thumb:hover {
     background: oklch(0.30 0.02 240);
   }
@@ -169,92 +179,103 @@
   letter-spacing: -0.06em;
   line-height: 0.85;
   text-transform: uppercase;
-  background: linear-gradient(135deg, 
-    oklch(0.98 0.01 240) 0%, 
-    oklch(0.75 0.25 180) 50%, 
-    oklch(0.70 0.30 280) 100%);
+  background: linear-gradient(135deg,
+      oklch(0.98 0.01 240) 0%,
+      oklch(0.75 0.25 180) 50%,
+      oklch(0.70 0.30 280) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
-/* Modern minimal spotlight text effect */
-.footer-brand-hover {
+/* 2030s Ultra-Minimal Aesthetic RIPPLE Text */
+.footer-2030-text {
   position: relative;
   color: oklch(0.40 0.01 240);
-  font-weight: 700;
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: transform;
+  transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
   cursor: pointer;
-  overflow: hidden;
+  font-variation-settings: "wght" 700, "slnt" 0;
+  letter-spacing: -0.03em;
 }
 
-/* Spotlight overlay */
-.footer-brand-hover::before {
+/* Ultra-subtle border reveal on hover */
+.footer-2030-text::before {
   content: '';
   position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(
-    circle at var(--x, 50%) var(--y, 50%),
-    oklch(0.75 0.25 180 / 0.8) 0%,
-    oklch(0.70 0.30 280 / 0.6) 20%,
-    transparent 50%
-  );
-  opacity: 0;
-  z-index: 1;
-  transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-  pointer-events: none;
-  mix-blend-mode: overlay;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 1px;
+  background: linear-gradient(90deg,
+      transparent 0%,
+      oklch(0.75 0.25 180 / 0.6) 50%,
+      transparent 100%);
+  transform: translate(-50%, -50%);
+  transition: width 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: -1;
 }
 
-/* Illuminated text layer */
-.footer-brand-hover::after {
-  content: 'RIPPLE';
+/* Minimal gradient text reveal */
+.footer-2030-text:hover {
+  background: linear-gradient(135deg,
+      oklch(0.85 0.01 240) 0%,
+      oklch(0.75 0.25 180) 50%,
+      oklch(0.85 0.01 240) 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-variation-settings: "wght" 800, "slnt" 0;
+  letter-spacing: -0.04em;
+}
+
+/* Expand the subtle line on hover */
+.footer-2030-text:hover::before {
+  width: 100%;
+}
+
+/* Ultra-minimal micro-interaction */
+@media (hover: hover) {
+  .footer-2030-text:hover {
+    transform: translateY(-1px);
+  }
+}
+
+/* Footer-wide spotlight effect */
+.footer-spotlight {
+  position: relative;
+  cursor: pointer;
+}
+
+.footer-spotlight::before {
+  content: '';
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(
-    135deg,
-    oklch(0.95 0.01 240) 0%,
-    oklch(0.75 0.25 180) 50%,
-    oklch(0.70 0.30 280) 100%
-  );
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  background: radial-gradient(circle 400px at var(--x, 50%) var(--y, 50%),
+      oklch(0.75 0.25 180 / 0.08) 0%,
+      oklch(0.70 0.30 280 / 0.05) 30%,
+      transparent 60%);
   opacity: 0;
-  z-index: 2;
-  transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-  mask: radial-gradient(
-    circle at var(--x, 50%) var(--y, 50%),
-    black 0%,
-    black 30%,
-    transparent 70%
-  );
-  -webkit-mask: radial-gradient(
-    circle at var(--x, 50%) var(--y, 50%),
-    black 0%,
-    black 30%,
-    transparent 70%
-  );
+  z-index: 1;
+  transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+  border-radius: inherit;
 }
 
-/* Hover state - Spotlight activation */
-.footer-brand-hover:hover::before {
+.footer-spotlight:hover::before {
   opacity: 1;
 }
 
-.footer-brand-hover:hover::after {
-  opacity: 1;
+/* Enhanced footer links with spotlight interaction */
+.footer-spotlight:hover .footer-link {
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.footer-brand-hover:hover {
-  transform: translateY(-1px);
+.footer-spotlight:hover .footer-link:hover {
+  color: oklch(0.75 0.25 180);
+  text-shadow: 0 0 10px oklch(0.75 0.25 180 / 0.3);
 }
 
 /* Smooth footer link animations */
@@ -283,6 +304,86 @@
   text-shadow: 0 2px 8px oklch(0.75 0.25 180 / 0.2);
 }
 
+/* Interactive Grid System Styles */
+.grid-line-vertical {
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.grid-line-vertical:hover {
+  background: oklch(0.75 0.25 180);
+  box-shadow: 0 0 10px oklch(0.75 0.25 180 / 0.3);
+  transform: scaleX(2);
+}
+
+.grid-line-horizontal {
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.grid-line-horizontal:hover {
+  background: oklch(0.75 0.25 180);
+  box-shadow: 0 0 10px oklch(0.75 0.25 180 / 0.3);
+  transform: scaleY(2);
+}
+
+.grid-tick-left,
+.grid-tick-right {
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.grid-intersection-marker {
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+}
+
+.grid-section-label {
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  padding: 1px 2px;
+  border-radius: 2px;
+  white-space: nowrap;
+  letter-spacing: 0.1em;
+  font-weight: 600;
+  line-height: 1;
+  max-width: fit-content;
+}
+
+.grid-section-label:hover {
+  background: oklch(0.75 0.25 180 / 0.1);
+}
+
+.grid-section-label.active {
+  background: oklch(0.75 0.25 180 / 0.15);
+  box-shadow: 0 0 10px oklch(0.75 0.25 180 / 0.3);
+}
+
+/* Grid hover effects for content sections */
+.grid-section:hover .grid-line-vertical,
+.grid-section:hover .grid-line-horizontal {
+  opacity: 1;
+  background: oklch(0.75 0.25 180 / 0.6);
+}
+
+/* Magnetic effect for grid elements */
+@keyframes gridPulse {
+
+  0%,
+  100% {
+    opacity: 0.6;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+}
+
+.grid-intersection-marker:hover {
+  animation: gridPulse 1s ease-in-out infinite;
+}
+
 /* Ensure footer brand text is never clipped */
 .footer-brand-hover {
   min-width: max-content;
@@ -294,6 +395,7 @@
   .footer-brand-hover {
     color: oklch(0.75 0.25 180);
   }
+
   .footer-brand-hover:hover {
     color: oklch(0.70 0.30 280);
     text-shadow: 0 0 20px oklch(0.75 0.25 180 / 0.3);
@@ -333,25 +435,33 @@
 
 /* Gradient backgrounds for sections */
 .gradient-bg {
-  background: radial-gradient(ellipse at top, 
-    oklch(0.15 0.05 240) 0%, 
-    oklch(0.08 0.01 240) 70%);
+  background: radial-gradient(ellipse at top,
+      oklch(0.15 0.05 240) 0%,
+      oklch(0.08 0.01 240) 70%);
 }
 
 /* Animated gradient for accents */
 .animated-gradient {
-  background: linear-gradient(45deg, 
-    oklch(0.75 0.25 180), 
-    oklch(0.70 0.30 280), 
-    oklch(0.75 0.25 180));
+  background: linear-gradient(45deg,
+      oklch(0.75 0.25 180),
+      oklch(0.70 0.30 280),
+      oklch(0.75 0.25 180));
   background-size: 200% 200%;
   animation: gradientShift 3s ease infinite;
 }
 
 @keyframes gradientShift {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 /* Glow effects for interactive elements */
@@ -362,15 +472,15 @@
 .glow-hover:hover {
   box-shadow: 0 0 30px oklch(0.75 0.25 180 / 0.5);
   transition: box-shadow 0.3s ease;
-} 
-/
-* Ultra-modern 2030s design enhancements */
-.hero-title {
-  background: linear-gradient(135deg, 
-    oklch(0.98 0.01 240) 0%, 
-    oklch(0.75 0.25 180) 30%, 
-    oklch(0.70 0.30 280) 70%, 
-    oklch(0.98 0.01 240) 100%);
+}
+
+/* / * Ultra-modern 2030s design enhancements */
+*/ .hero-title {
+  background: linear-gradient(135deg,
+      oklch(0.98 0.01 240) 0%,
+      oklch(0.75 0.25 180) 30%,
+      oklch(0.70 0.30 280) 70%,
+      oklch(0.98 0.01 240) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -383,16 +493,26 @@
   background: oklch(0.08 0.01 240 / 0.4);
   backdrop-filter: blur(40px) saturate(180%);
   border: 1px solid oklch(0.20 0.02 240 / 0.2);
-  box-shadow: 
+  box-shadow:
     0 8px 32px oklch(0.08 0.01 240 / 0.3),
     inset 0 1px 0 oklch(0.98 0.01 240 / 0.1);
 }
 
 /* Floating animation for cards */
 @keyframes float {
-  0%, 100% { transform: translateY(0px) rotate(0deg); }
-  33% { transform: translateY(-10px) rotate(1deg); }
-  66% { transform: translateY(-5px) rotate(-1deg); }
+
+  0%,
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+
+  33% {
+    transform: translateY(-10px) rotate(1deg);
+  }
+
+  66% {
+    transform: translateY(-5px) rotate(-1deg);
+  }
 }
 
 .float-animation {
@@ -413,7 +533,7 @@
 .btn-2030 {
   background: linear-gradient(135deg, oklch(0.98 0.01 240), oklch(0.95 0.01 240));
   border: 1px solid oklch(0.20 0.02 240 / 0.3);
-  box-shadow: 
+  box-shadow:
     0 4px 16px oklch(0.08 0.01 240 / 0.2),
     inset 0 1px 0 oklch(0.98 0.01 240 / 0.8);
   transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
@@ -421,7 +541,7 @@
 
 .btn-2030:hover {
   background: linear-gradient(135deg, oklch(0.95 0.01 240), oklch(0.92 0.01 240));
-  box-shadow: 
+  box-shadow:
     0 6px 24px oklch(0.08 0.01 240 / 0.3),
     inset 0 1px 0 oklch(0.98 0.01 240 / 0.9);
   transform: translateY(-1px);

@@ -13,7 +13,6 @@ import NavbarHeader from "@/components/ui/resizable-navbar-demo";
 import { motion, Variants } from "framer-motion";
 import { useEffect, useState } from "react";
 
-
 export default function Home() {
   const [isClient, setIsClient] = useState(false);
 
@@ -51,7 +50,7 @@ export default function Home() {
 
   // Minimal divider variants
   const modernDividerVariants: Variants = {
-    hidden: { 
+    hidden: {
       opacity: 0,
       scaleX: 0.9
     },
@@ -100,7 +99,7 @@ export default function Home() {
       initial="hidden"
       animate="visible"
     >
-      {/* Ultra-minimal 2025+ Background with Clean Vertical Rulers */}
+      {/* Ultra-minimal 2025+ Background */}
       <div className="fixed inset-0 pointer-events-none">
         {/* Single subtle grid */}
         <div
@@ -115,14 +114,14 @@ export default function Home() {
         />
 
         {/* Interactive Vertical Ruler Lines */}
-        <motion.div 
+        <motion.div
           className="absolute inset-y-0 left-8 md:left-16 lg:left-24 w-px bg-border shadow-sm grid-line-vertical"
           initial={{ scaleY: 0, opacity: 0 }}
           animate={{ scaleY: 1, opacity: 1 }}
           transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.5 }}
           style={{ transformOrigin: 'top' }}
         />
-        <motion.div 
+        <motion.div
           className="absolute inset-y-0 right-8 md:right-16 lg:right-24 w-px bg-border shadow-sm grid-line-vertical"
           initial={{ scaleY: 0, opacity: 0 }}
           animate={{ scaleY: 1, opacity: 1 }}
@@ -130,22 +129,24 @@ export default function Home() {
           style={{ transformOrigin: 'top' }}
         />
 
+
+
         {/* Animated Ruler Tick Marks - Left */}
         <div className="absolute left-8 md:left-16 lg:left-24 top-0 h-full">
           {Array.from({ length: 8 }).map((_, i) => (
             <motion.div
               key={`left-tick-${i}`}
               className="absolute w-4 h-px bg-border grid-tick-left"
-              style={{ top: `${10 + (i * 10)}%` }}
+              style={{ top: `${(i + 1) * 12.5}%` }}
               initial={{ scaleX: 0, opacity: 0 }}
               animate={{ scaleX: 1, opacity: 1 }}
-              transition={{ 
-                duration: 0.4, 
-                ease: [0.16, 1, 0.3, 1], 
-                delay: 1.8 + (i * 0.1) 
+              transition={{
+                duration: 0.4,
+                ease: [0.16, 1, 0.3, 1],
+                delay: 1.8 + (i * 0.1)
               }}
-              whileHover={{ 
-                scaleX: 1.5, 
+              whileHover={{
+                scaleX: 1.5,
                 backgroundColor: 'oklch(0.75 0.25 180)',
                 transition: { duration: 0.2 }
               }}
@@ -159,16 +160,16 @@ export default function Home() {
             <motion.div
               key={`right-tick-${i}`}
               className="absolute w-4 h-px bg-border -translate-x-4 grid-tick-right"
-              style={{ top: `${10 + (i * 10)}%` }}
+              style={{ top: `${(i + 1) * 12.5}%` }}
               initial={{ scaleX: 0, opacity: 0 }}
               animate={{ scaleX: 1, opacity: 1 }}
-              transition={{ 
-                duration: 0.4, 
-                ease: [0.16, 1, 0.3, 1], 
-                delay: 1.8 + (i * 0.1) 
+              transition={{
+                duration: 0.4,
+                ease: [0.16, 1, 0.3, 1],
+                delay: 1.8 + (i * 0.1)
               }}
-              whileHover={{ 
-                scaleX: 1.5, 
+              whileHover={{
+                scaleX: 1.5,
                 backgroundColor: 'oklch(0.75 0.25 180)',
                 transition: { duration: 0.2 }
               }}
@@ -178,29 +179,28 @@ export default function Home() {
 
         {/* Animated Intersection Markers */}
         {[
-          { top: '10%', left: true, color: 'primary', delay: 2.2 },
-          { top: '10%', left: false, color: 'primary', delay: 2.3 },
-          { top: '40%', left: true, color: 'accent', delay: 2.4 },
-          { top: '40%', left: false, color: 'accent', delay: 2.5 },
-          { top: '70%', left: true, color: 'success', delay: 2.6 },
-          { top: '70%', left: false, color: 'success', delay: 2.7 }
+          { top: '0%', left: true, color: 'primary', delay: 2.2 },
+          { top: '0%', left: false, color: 'primary', delay: 2.3 },
+          { top: '50%', left: true, color: 'accent', delay: 2.4 },
+          { top: '50%', left: false, color: 'accent', delay: 2.5 },
+          { top: '100%', left: true, color: 'primary', delay: 2.6 },
+          { top: '100%', left: false, color: 'primary', delay: 2.7 }
         ].map((marker, i) => (
           <motion.div
             key={`marker-${i}`}
-            className={`absolute w-2 h-2 bg-${marker.color} rounded-full grid-intersection-marker ${
-              marker.left 
-                ? 'left-8 md:left-16 lg:left-24 -translate-x-1' 
-                : 'right-8 md:right-16 lg:right-24 translate-x-1'
-            } ${marker.top === '70%' ? 'translate-y-1' : '-translate-y-1'}`}
+            className={`absolute w-2 h-2 bg-${marker.color} rounded-full grid-intersection-marker ${marker.left
+              ? 'left-8 md:left-16 lg:left-24 -translate-x-1'
+              : 'right-8 md:right-16 lg:right-24 translate-x-1'
+              } ${marker.top === '100%' ? 'translate-y-1' : '-translate-y-1'}`}
             style={{ top: marker.top }}
             initial={{ scale: 0, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
-            transition={{ 
-              duration: 0.5, 
-              ease: [0.16, 1, 0.3, 1], 
-              delay: marker.delay 
+            transition={{
+              duration: 0.5,
+              ease: [0.16, 1, 0.3, 1],
+              delay: marker.delay
             }}
-            whileHover={{ 
+            whileHover={{
               scale: 1.5,
               boxShadow: `0 0 20px oklch(0.75 0.25 180 / 0.5)`,
               transition: { duration: 0.2 }
@@ -208,21 +208,61 @@ export default function Home() {
           />
         ))}
 
-        {/* Dynamic Clickable Section Labels */}
+        {/* Animated Section Labels */}
+        {[
+          { top: '4%', label: 'HERO', delay: 2.8 },
+          { top: '25%', label: 'FEATURES', delay: 2.9 },
+          { top: '50%', label: 'CONTENT', delay: 3.0 },
+          { top: '75%', label: 'FOOTER', delay: 3.1 }
+        ].map((section, i) => (
+          <motion.div
+            key={`label-${i}`}
+            className="absolute left-2 md:left-6 lg:left-10 text-xs mono text-muted-foreground/60 rotate-90 origin-left grid-section-label"
+            style={{ top: section.top }}
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{
+              duration: 0.6,
+              ease: [0.16, 1, 0.3, 1],
+              delay: section.delay
+            }}
+            whileHover={{
+              color: 'oklch(0.75 0.25 180)',
+              scale: 1.1,
+              transition: { duration: 0.2 }
+            }}
+          >
+            {section.label}
+          </motion.div>
+        ))}
 
+        {/* Pulse Animation for Active Section */}
+        <motion.div
+          className="absolute left-8 md:left-16 lg:left-24 right-8 md:right-16 lg:right-24 h-px bg-primary/20"
+          style={{ top: '25%' }}
+          animate={{
+            opacity: [0.2, 0.6, 0.2],
+            scaleY: [1, 1.5, 1]
+          }}
+          transition={{
+            duration: 3,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+        />
 
         {/* Minimal ambient lighting */}
         <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/[0.006] rounded-full blur-3xl" />
         <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-accent/[0.004] rounded-full blur-3xl" />
-        
+
         {/* Single floating indicator */}
-        <motion.div 
+        <motion.div
           className="absolute top-1/3 right-1/6 w-0.5 h-0.5 bg-primary/30 rounded-full"
-          animate={{ 
+          animate={{
             opacity: [0.3, 0.7, 0.3]
           }}
-          transition={{ 
-            duration: 6, 
+          transition={{
+            duration: 6,
             repeat: Infinity,
             ease: "easeInOut"
           }}
@@ -237,12 +277,12 @@ export default function Home() {
         <NavbarHeader />
       </motion.div>
 
-      {/* Main content with clean spacing - symmetric ruler clearance */}
+      {/* Main content with interactive grid integration */}
       <motion.main
-        className="w-full relative z-10 px-24 md:px-32 lg:px-40 grid-content"
+        className="w-full relative z-10 px-8 md:px-16 lg:px-24 grid-content"
         variants={containerVariants}
       >
-        <motion.div variants={modernSectionVariants} id="hero">
+        <motion.div variants={modernSectionVariants}>
           <HeroSection />
         </motion.div>
 
@@ -261,19 +301,25 @@ export default function Home() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-50px" }}
-          id="features"
         >
           <ThemeShowcase />
         </motion.div>
 
         <motion.div
-          className="py-20 flex justify-center"
+          className="py-20 flex justify-center relative"
           variants={modernDividerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-50px" }}
         >
           <div className="w-8 h-px bg-border/15" />
+          <motion.div
+            className="absolute -left-8 md:-left-16 lg:-left-24 -right-8 md:-right-16 lg:-right-24 h-px bg-border/30"
+            initial={{ scaleX: 0 }}
+            whileInView={{ scaleX: 1 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          />
         </motion.div>
 
         <motion.div
@@ -281,19 +327,25 @@ export default function Home() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-50px" }}
-          id="investing"
         >
           <InvestingSection />
         </motion.div>
 
         <motion.div
-          className="py-20 flex justify-center"
+          className="py-20 flex justify-center relative"
           variants={modernDividerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-50px" }}
         >
           <div className="w-8 h-px bg-border/15" />
+          <motion.div
+            className="absolute -left-8 md:-left-16 lg:-left-24 -right-8 md:-right-16 lg:-right-24 h-px bg-border/30"
+            initial={{ scaleX: 0 }}
+            whileInView={{ scaleX: 1 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          />
         </motion.div>
 
         <motion.div
@@ -301,19 +353,25 @@ export default function Home() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-50px" }}
-          id="steps"
         >
           <StepsSection />
         </motion.div>
 
         <motion.div
-          className="py-20 flex justify-center"
+          className="py-20 flex justify-center relative"
           variants={modernDividerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-50px" }}
         >
           <div className="w-8 h-px bg-border/15" />
+          <motion.div
+            className="absolute -left-8 md:-left-16 lg:-left-24 -right-8 md:-right-16 lg:-right-24 h-px bg-border/30"
+            initial={{ scaleX: 0 }}
+            whileInView={{ scaleX: 1 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          />
         </motion.div>
 
         <motion.div
@@ -321,19 +379,25 @@ export default function Home() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-50px" }}
-          id="achievements"
         >
           <AchievementsSection />
         </motion.div>
 
         <motion.div
-          className="py-20 flex justify-center"
+          className="py-20 flex justify-center relative"
           variants={modernDividerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-50px" }}
         >
           <div className="w-8 h-px bg-border/15" />
+          <motion.div
+            className="absolute -left-8 md:-left-16 lg:-left-24 -right-8 md:-right-16 lg:-right-24 h-px bg-border/30"
+            initial={{ scaleX: 0 }}
+            whileInView={{ scaleX: 1 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          />
         </motion.div>
 
         <motion.div
@@ -341,19 +405,25 @@ export default function Home() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-50px" }}
-          id="charts"
         >
           <ChartSection />
         </motion.div>
 
         <motion.div
-          className="py-20 flex justify-center"
+          className="py-20 flex justify-center relative"
           variants={modernDividerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-50px" }}
         >
           <div className="w-8 h-px bg-border/15" />
+          <motion.div
+            className="absolute -left-8 md:-left-16 lg:-left-24 -right-8 md:-right-16 lg:-right-24 h-px bg-border/30"
+            initial={{ scaleX: 0 }}
+            whileInView={{ scaleX: 1 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          />
         </motion.div>
 
         <motion.div
@@ -361,19 +431,25 @@ export default function Home() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-50px" }}
-          id="invest"
         >
           <InvestSection />
         </motion.div>
 
         <motion.div
-          className="py-20 flex justify-center"
+          className="py-20 flex justify-center relative"
           variants={modernDividerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-50px" }}
         >
           <div className="w-8 h-px bg-border/15" />
+          <motion.div
+            className="absolute -left-8 md:-left-16 lg:-left-24 -right-8 md:-right-16 lg:-right-24 h-px bg-border/30"
+            initial={{ scaleX: 0 }}
+            whileInView={{ scaleX: 1 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          />
         </motion.div>
 
         <motion.div
@@ -381,19 +457,25 @@ export default function Home() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-50px" }}
-          id="community"
         >
           <BecomeInvestorSection />
         </motion.div>
 
         <motion.div
-          className="py-20 flex justify-center"
+          className="py-20 flex justify-center relative"
           variants={modernDividerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-50px" }}
         >
           <div className="w-8 h-px bg-border/15" />
+          <motion.div
+            className="absolute -left-8 md:-left-16 lg:-left-24 -right-8 md:-right-16 lg:-right-24 h-px bg-border/30"
+            initial={{ scaleX: 0 }}
+            whileInView={{ scaleX: 1 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          />
         </motion.div>
 
         <motion.div
@@ -401,7 +483,6 @@ export default function Home() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-50px" }}
-          id="footer"
         >
           <Footer />
         </motion.div>
@@ -431,7 +512,7 @@ export default function Home() {
         transition={{ duration: 0.6, delay: 1.2 }}
       >
         <div className="flex items-center space-x-2 text-xs text-muted-foreground/40">
-          <motion.div 
+          <motion.div
             className="w-1 h-1 bg-success/50 rounded-full"
             animate={{ opacity: [0.5, 1, 0.5] }}
             transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}

@@ -1,3 +1,5 @@
+import { HyperText } from "@/components/ui/hyper-text";
+
 // Crypto Protocol Logo Components
 const BitcoinLogo = () => (
   <svg viewBox="0 0 24 24" className="w-7 h-7">
@@ -158,7 +160,7 @@ export function InvestSection() {
   ];
 
   return (
-    <section className="w-full px-4 py-20 md:px-8 md:py-32 relative overflow-hidden">
+    <section className="w-full py-20 md:py-32 relative overflow-hidden">
       {/* Background Elements */}
       <div className="absolute inset-0 gradient-bg opacity-50" />
       <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
@@ -172,11 +174,26 @@ export function InvestSection() {
             <span className="text-sm mono text-muted-foreground">LIVE PROTOCOLS</span>
           </div>
           
-          <h2 className="text-6xl md:text-7xl lg:text-8xl font-black mb-6 leading-[0.85] tracking-tighter hero-title">
-            DEFI
-            <br />
-            <span className="text-muted-foreground">ECOSYSTEM</span>
-          </h2>
+          <div className="text-6xl md:text-7xl lg:text-8xl font-black mb-6 leading-[0.85] tracking-tighter">
+            <HyperText 
+              as="h2"
+              className="hero-title text-6xl md:text-7xl lg:text-8xl font-black leading-[0.85] tracking-tighter py-0"
+              startOnView={false}
+              duration={600}
+              animateOnHover={true}
+            >
+              DEFI
+            </HyperText>
+            <HyperText 
+              as="span"
+              className="text-muted-foreground text-6xl md:text-7xl lg:text-8xl font-black leading-[0.85] tracking-tighter py-0 block"
+              startOnView={false}
+              duration={800}
+              animateOnHover={true}
+            >
+              ECOSYSTEM
+            </HyperText>
+          </div>
           
           <p className="text-muted-foreground text-lg leading-relaxed max-w-2xl mx-auto">
             Access institutional-grade DeFi protocols with automated yield strategies 

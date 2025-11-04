@@ -3,30 +3,49 @@
 import { useRef, useEffect } from 'react';
 
 export function Footer() {
-  const brandRef = useRef<HTMLHeadingElement>(null);
+  const footerRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
-      if (!brandRef.current) return;
+      if (!footerRef.current) return;
 
-      const rect = brandRef.current.getBoundingClientRect();
-      const x = ((e.clientX - rect.left) / rect.width) * 100;
-      const y = ((e.clientY - rect.top) / rect.height) * 100;
+      const footerRect = footerRef.current.getBoundingClientRect();
+      const x = ((e.clientX - footerRect.left) / footerRect.width) * 100;
+      const y = ((e.clientY - footerRect.top) / footerRect.height) * 100;
 
-      brandRef.current.style.setProperty('--x', `${x}%`);
-      brandRef.current.style.setProperty('--y', `${y}%`);
+      // Apply spotlight coordinates to the footer only
+      footerRef.current.style.setProperty('--x', `${x}%`);
+      footerRef.current.style.setProperty('--y', `${y}%`);
     };
 
-    const brandElement = brandRef.current;
-    if (brandElement) {
-      brandElement.addEventListener('mousemove', handleMouseMove);
-      return () => brandElement.removeEventListener('mousemove', handleMouseMove);
+    const footerElement = footerRef.current;
+    if (footerElement) {
+      footerElement.addEventListener('mousemove', handleMouseMove);
+      return () => footerElement.removeEventListener('mousemove', handleMouseMove);
     }
   }, []);
 
   return (
-    <footer className="px-4 py-16 md:px-8 glass rounded-2xl mx-2 mb-4 border border-border overflow-visible">
-      <div className="mx-auto overflow-visible">
+    <footer 
+      ref={footerRef}
+      className="py-16 glass rounded-2xl mb-4 border border-border overflow-hidden footer-spotlight relative"
+      style={{ '--x': '50%', '--y': '50%' } as React.CSSProperties}
+    >
+      {/* Subtle background pattern that reacts to spotlight */}
+      <div className="absolute inset-0 opacity-[0.02] pointer-events-none">
+        <div
+          className="absolute inset-0"
+          style={{
+            backgroundImage: `
+              linear-gradient(oklch(0.75 0.25 180) 0.5px, transparent 0.5px),
+              linear-gradient(90deg, oklch(0.75 0.25 180) 0.5px, transparent 0.5px)
+            `,
+            backgroundSize: '40px 40px'
+          }}
+        />
+      </div>
+
+      <div className="mx-auto max-w-7xl overflow-hidden relative z-10">
 
         {/* Minimal Links Section */}
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-12 space-y-8 md:space-y-0">
@@ -51,23 +70,19 @@ export function Footer() {
         <div className="text-center space-y-6">
 
           {/* Copyright */}
-          <div className="text-muted-foreground/60 text-xs mono">
+          <div className="text-muted-foreground/60 text-xs mono transition-colors duration-300 hover:text-muted-foreground/80">
             © 2025 Ripple Protocol
           </div>
 
-          {/* Large Brand Name with Spotlight Effect */}
-          <div className="relative cursor-pointer group px-8 md:px-16 lg:px-24 overflow-visible">
-            <h1
-              ref={brandRef}
-              className="text-6xl md:text-8xl lg:text-[16rem] xl:text-[18rem] text-center font-space-grotesk font-bold leading-none tracking-tighter footer-brand-hover overflow-visible whitespace-nowrap"
-              style={{ '--x': '50%', '--y': '50%' } as React.CSSProperties}
-            >
+          {/* Large Brand Name - 2030s Minimal Aesthetic */}
+          <div className="relative flex justify-center px-8">
+            <h1 className="text-6xl md:text-8xl lg:text-[12rem] xl:text-[14rem] text-center font-space-grotesk font-bold leading-none tracking-tighter whitespace-nowrap footer-2030-text">
               RIPPLE
             </h1>
           </div>
 
           {/* Tagline */}
-          <div className="text-muted-foreground/40 text-xs mono tracking-widest">
+          <div className="text-muted-foreground/40 text-xs mono tracking-widest transition-colors duration-300 hover:text-muted-foreground/60">
             DECENTRALIZED • OPEN SOURCE • WEB3
           </div>
 

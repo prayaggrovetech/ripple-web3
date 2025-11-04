@@ -1,6 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
+import { HyperText } from "@/components/ui/hyper-text";
 import { ArrowRight, Zap, Shield, Globe } from "lucide-react";
 import { motion } from "framer-motion";
 
@@ -11,12 +12,12 @@ export function HeroSection() {
       <div className="absolute inset-0">
         {/* Subtle gradient mesh */}
         <div className="absolute inset-0 bg-linear-to-br from-primary/2 via-transparent to-accent/3" />
-        
+
         {/* Floating geometric elements */}
         <div className="absolute top-1/4 left-1/6 w-2 h-2 bg-primary/20 rounded-full animate-pulse" />
         <div className="absolute top-1/3 right-1/4 w-1 h-1 bg-accent/30 rounded-full animate-pulse" style={{ animationDelay: '1s' }} />
         <div className="absolute bottom-1/3 left-1/3 w-1.5 h-1.5 bg-success/20 rounded-full animate-pulse" style={{ animationDelay: '2s' }} />
-        
+
         {/* Ultra-subtle grid */}
         <div
           className="absolute inset-0 opacity-[0.008]"
@@ -33,12 +34,12 @@ export function HeroSection() {
       {/* Main content */}
       <div className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-12">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center py-20">
-          
+
           {/* Left content - 7 columns */}
           <div className="lg:col-span-7 space-y-12">
-            
+
             {/* Status indicator */}
-            <motion.div 
+            <motion.div
               className="flex items-center space-x-3"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -51,26 +52,42 @@ export function HeroSection() {
             </motion.div>
 
             {/* Main headline */}
-            <motion.div 
+            <motion.div
               className="space-y-6"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              <h1 className="text-5xl md:text-7xl lg:text-8xl xl:text-9xl font-space-grotesk font-bold leading-[0.85] tracking-tighter">
-                <span className="block text-foreground">RIPPLE</span>
-                <span className="block hero-title">FINANCE</span>
-              </h1>
-              
+              <div className="text-5xl md:text-7xl lg:text-8xl xl:text-9xl font-space-grotesk font-bold leading-[0.85] tracking-tighter">
+                <HyperText
+                  as="h1"
+                  className="block text-foreground text-5xl md:text-7xl lg:text-8xl xl:text-9xl font-space-grotesk font-bold leading-[0.85] tracking-tighter py-0"
+                  startOnView={false}
+                  duration={1000}
+                  animateOnHover={true}
+                >
+                  RIPPLE
+                </HyperText>
+                <HyperText
+                  as="h1"
+                  className="block hero-title text-5xl md:text-7xl lg:text-8xl xl:text-9xl font-space-grotesk font-bold leading-[0.85] tracking-tighter py-0"
+                  startOnView={false}
+                  duration={1000}
+                  animateOnHover={true}
+                >
+                  FINANCE
+                </HyperText>
+              </div>
+
               <p className="text-lg md:text-xl text-muted-foreground max-w-2xl leading-relaxed font-plus-jakarta-sans font-light">
-                Next-generation decentralized finance platform. 
-                <span className="text-foreground font-medium"> Zero fees</span>, 
+                Next-generation decentralized finance platform.
+                <span className="text-foreground font-medium"> Zero fees</span>,
                 <span className="text-foreground font-medium"> infinite possibilities</span>.
               </p>
             </motion.div>
 
             {/* Feature highlights */}
-            <motion.div 
+            <motion.div
               className="grid grid-cols-1 md:grid-cols-3 gap-6"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -85,7 +102,7 @@ export function HeroSection() {
                   <div className="text-xs text-muted-foreground">Sub-second trades</div>
                 </div>
               </div>
-              
+
               <div className="flex items-center space-x-3">
                 <div className="w-8 h-8 bg-success/10 rounded-lg flex items-center justify-center">
                   <Shield size={16} className="text-success" />
@@ -95,7 +112,7 @@ export function HeroSection() {
                   <div className="text-xs text-muted-foreground">Multi-sig protected</div>
                 </div>
               </div>
-              
+
               <div className="flex items-center space-x-3">
                 <div className="w-8 h-8 bg-accent/10 rounded-lg flex items-center justify-center">
                   <Globe size={16} className="text-accent" />
@@ -108,20 +125,20 @@ export function HeroSection() {
             </motion.div>
 
             {/* CTA Section */}
-            <motion.div 
+            <motion.div
               className="flex flex-col sm:flex-row items-start sm:items-center space-y-4 sm:space-y-0 sm:space-x-6"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.6 }}
             >
-              <Button 
-                size="lg" 
+              <Button
+                size="lg"
                 className="bg-foreground text-background hover:bg-foreground/90 px-8 py-4 text-base font-semibold rounded-xl transition-all duration-300 hover:scale-105"
               >
                 Launch App
                 <ArrowRight size={18} className="ml-2" />
               </Button>
-              
+
               <div className="flex items-center space-x-4 text-sm text-muted-foreground">
                 <span>TVL: <span className="text-foreground font-semibold mono">$2.4B</span></span>
                 <span>•</span>
@@ -133,20 +150,20 @@ export function HeroSection() {
 
           {/* Right content - 5 columns */}
           <div className="lg:col-span-5 flex justify-center lg:justify-end">
-            <motion.div 
+            <motion.div
               className="relative"
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8, delay: 0.3 }}
             >
-              
+
               {/* Floating data cards */}
               <div className="relative w-80 h-96">
-                
+
                 {/* Main trading card */}
                 <div className="absolute top-0 right-0 w-72 h-80 bg-card/80 backdrop-blur-xl border border-border/50 rounded-2xl p-6 shadow-2xl">
                   <div className="space-y-6">
-                    
+
                     {/* Header */}
                     <div className="flex items-center justify-between">
                       <div className="flex items-center space-x-3">
@@ -232,7 +249,7 @@ export function HeroSection() {
       </div>
 
       {/* Scroll indicator */}
-      <motion.div 
+      <motion.div
         className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}

@@ -1,6 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
+import { HyperText } from "@/components/ui/hyper-text";
 import { motion } from "framer-motion";
 
 export function ThemeShowcase() {
@@ -44,7 +45,7 @@ export function ThemeShowcase() {
   ];
 
   return (
-    <section className="w-full py-32 px-6 md:px-12 relative">
+    <section className="w-full py-32 relative">
 
       {/* Ultra-minimal background */}
       <div className="absolute inset-0">
@@ -61,11 +62,26 @@ export function ThemeShowcase() {
             <div className="w-1 h-1 bg-primary rounded-full animate-pulse" />
             <span className="text-xs text-muted-foreground mono tracking-widest uppercase">Platform Metrics</span>
           </div>
-          <h2 className="text-6xl md:text-7xl lg:text-8xl font-space-grotesk font-bold leading-[0.85] tracking-tighter hero-title">
-            BUILT FOR
-            <br />
-            <span className="text-muted-foreground">PERFORMANCE</span>
-          </h2>
+          <div className="text-6xl md:text-7xl lg:text-8xl font-space-grotesk font-bold leading-[0.85] tracking-tighter">
+            <HyperText 
+              as="h2"
+              className="hero-title text-6xl md:text-7xl lg:text-8xl font-space-grotesk font-bold leading-[0.85] tracking-tighter py-0"
+              startOnView={false}
+              duration={700}
+              animateOnHover={true}
+            >
+              BUILT FOR
+            </HyperText>
+            <HyperText 
+              as="span"
+              className="text-muted-foreground text-6xl md:text-7xl lg:text-8xl font-space-grotesk font-bold leading-[0.85] tracking-tighter py-0 block"
+              startOnView={false}
+              duration={900}
+              animateOnHover={true}
+            >
+              PERFORMANCE
+            </HyperText>
+          </div>
         </div>
 
         {/* Ultra-minimal metrics grid */}

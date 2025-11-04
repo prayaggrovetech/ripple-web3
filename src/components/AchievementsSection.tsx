@@ -1,4 +1,5 @@
 import { Users, DollarSign, Globe, Shield } from "lucide-react";
+import { HyperText } from "@/components/ui/hyper-text";
 
 export function AchievementsSection() {
     const achievements = [
@@ -29,11 +30,17 @@ export function AchievementsSection() {
     ];
 
     return (
-        <section className="px-4 py-16 md:px-8 md:py-24">
-            <div className="mx-auto">
-                <h2 className="text-4xl md:text-5xl font-bold mb-16 leading-tight hero-title">
+        <section className="py-16 md:py-24">
+            <div className="mx-auto max-w-7xl">
+                <HyperText 
+                    as="h2"
+                    className="text-4xl md:text-5xl font-bold mb-16 leading-tight hero-title py-0"
+                    startOnView={false}
+                    duration={800}
+                    animateOnHover={true}
+                >
                     PROTOCOL METRICS
-                </h2>
+                </HyperText>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-1">
                     {achievements.map((achievement, index) => {
