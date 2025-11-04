@@ -94,7 +94,7 @@ export default function Home() {
 
   return (
     <motion.div
-      className="w-full bg-background overflow-x-hidden relative"
+      className="w-full bg-background relative"
       variants={containerVariants}
       initial="hidden"
       animate="visible"
@@ -141,7 +141,7 @@ export default function Home() {
 
       {/* Main content with ultra-minimal spacing */}
       <motion.main
-        className="w-full overflow-x-hidden relative z-10"
+        className="w-full relative z-10"
         variants={containerVariants}
       >
         <motion.div variants={modernSectionVariants}>

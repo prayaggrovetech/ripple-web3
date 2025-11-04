@@ -1,75 +1,49 @@
 export function Footer() {
   return (
-    <footer className="px-4 py-16 md:px-8 glass rounded-2xl mx-2 mb-4 border border-border">
-      <div className="mx-auto">
+    <footer className="px-4 py-16 md:px-8 glass rounded-2xl mx-2 mb-4 border border-border overflow-visible">
+      <div className="mx-auto overflow-visible">
 
-        {/* Large Brand Name */}
-        <div className="mb-16">
-          <h1 className="text-8xl md:text-9xl lg:text-[32rem] text-center font-space-grotesk font-bold leading-none tracking-tighter footer-brand-simple">
-            RIPPLE
-          </h1>
+        {/* Minimal Links Section */}
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-12 space-y-8 md:space-y-0">
+          
+          {/* Essential Links */}
+          <div className="flex flex-wrap gap-x-8 gap-y-4">
+            <a href="#" className="footer-link text-muted-foreground text-sm hover:text-primary transition-all duration-300 mono">Trade</a>
+            <a href="#" className="footer-link text-muted-foreground text-sm hover:text-primary transition-all duration-300 mono">Stake</a>
+            <a href="#" className="footer-link text-muted-foreground text-sm hover:text-primary transition-all duration-300 mono">Docs</a>
+            <a href="#" className="footer-link text-muted-foreground text-sm hover:text-primary transition-all duration-300 mono">Discord</a>
+            <a href="#" className="footer-link text-muted-foreground text-sm hover:text-primary transition-all duration-300 mono">Twitter</a>
+          </div>
+
+          {/* Legal Links */}
+          <div className="flex gap-6">
+            <a href="#" className="footer-link text-muted-foreground text-xs hover:text-primary transition-all duration-300 mono">Privacy</a>
+            <a href="#" className="footer-link text-muted-foreground text-xs hover:text-primary transition-all duration-300 mono">Terms</a>
+          </div>
         </div>
 
-        {/* Footer Links Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
-
-          {/* DeFi */}
-          <div className="space-y-6">
-            <h4 className="text-foreground font-medium text-sm mono">DeFi</h4>
-            <div className="space-y-3">
-              <a href="#" className="block text-muted-foreground text-sm hover:text-primary transition-colors">Yield Farming</a>
-              <a href="#" className="block text-muted-foreground text-sm hover:text-primary transition-colors">Liquidity Mining</a>
-              <a href="#" className="block text-muted-foreground text-sm hover:text-primary transition-colors">Staking</a>
-              <a href="#" className="block text-muted-foreground text-sm hover:text-primary transition-colors">Cross-chain</a>
-            </div>
+        {/* Integrated Brand Section */}
+        <div className="text-center space-y-6">
+          
+          {/* Copyright */}
+          <div className="text-muted-foreground/60 text-xs mono">
+            © 2025 Ripple Protocol
           </div>
 
-          {/* Protocols */}
-          <div className="space-y-6">
-            <h4 className="text-foreground font-medium text-sm mono">Protocols</h4>
-            <div className="space-y-3">
-              <a href="#" className="block text-muted-foreground text-sm hover:text-primary transition-colors">Uniswap</a>
-              <a href="#" className="block text-muted-foreground text-sm hover:text-primary transition-colors">Aave</a>
-              <a href="#" className="block text-muted-foreground text-sm hover:text-primary transition-colors">Compound</a>
-              <a href="#" className="block text-muted-foreground text-sm hover:text-primary transition-colors">Curve</a>
-            </div>
+          {/* Large Brand Name */}
+          <div className="relative cursor-pointer group px-8 md:px-16 lg:px-24 overflow-visible">
+            <h1 className="text-6xl md:text-8xl lg:text-[16rem] xl:text-[18rem] text-center font-space-grotesk font-bold leading-none tracking-tighter footer-brand-hover overflow-visible whitespace-nowrap">
+              RIPPLE
+            </h1>
           </div>
 
-          {/* Community */}
-          <div className="space-y-6">
-            <h4 className="text-foreground font-medium text-sm mono">Community</h4>
-            <div className="space-y-3">
-              <a href="#" className="block text-muted-foreground text-sm hover:text-primary transition-colors">Discord</a>
-              <a href="#" className="block text-muted-foreground text-sm hover:text-primary transition-colors">Telegram</a>
-              <a href="#" className="block text-muted-foreground text-sm hover:text-primary transition-colors">Twitter</a>
-              <a href="#" className="block text-muted-foreground text-sm hover:text-primary transition-colors">GitHub</a>
-            </div>
-          </div>
-
-          {/* Resources */}
-          <div className="space-y-6">
-            <h4 className="text-foreground font-medium text-sm mono">Resources</h4>
-            <div className="space-y-3">
-              <a href="#" className="block text-muted-foreground text-sm hover:text-primary transition-colors">Documentation</a>
-              <a href="#" className="block text-muted-foreground text-sm hover:text-primary transition-colors">Audits</a>
-              <a href="#" className="block text-muted-foreground text-sm hover:text-primary transition-colors">Bug Bounty</a>
-              <a href="#" className="block text-muted-foreground text-sm hover:text-primary transition-colors">Governance</a>
-            </div>
+          {/* Tagline */}
+          <div className="text-muted-foreground/40 text-xs mono tracking-widest">
+            DECENTRALIZED • OPEN SOURCE • WEB3
           </div>
 
         </div>
 
-        {/* Bottom Section */}
-        <div className="mt-16 pt-8 border-t border-border flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-          <div className="text-muted-foreground text-sm mono">
-            © 2025 Ripple Protocol. Decentralized & Open Source.
-          </div>
-          <div className="flex space-x-6">
-            <a href="#" className="text-muted-foreground text-sm hover:text-primary transition-colors mono">Privacy</a>
-            <a href="#" className="text-muted-foreground text-sm hover:text-primary transition-colors mono">Terms</a>
-            <a href="#" className="text-muted-foreground text-sm hover:text-primary transition-colors mono">Security</a>
-          </div>
-        </div>
       </div>
     </footer>
   );
