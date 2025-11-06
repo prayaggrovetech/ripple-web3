@@ -11,8 +11,9 @@ import {
   MobileNavToggle,
   MobileNavMenu,
 } from "@/components/ui/resizable-navbar";
-import { SimpleWalletConnect } from "@/components/ui/SimpleWalletConnect";
+import { WalletConnect } from "@/components/ui/WalletConnect";
 import { useState } from "react";
+import Link from "next/link";
 
 export default function NavbarHeader() {
   const navItems = [
@@ -22,7 +23,7 @@ export default function NavbarHeader() {
     },
     {
       name: "Portfolio", 
-      link: "#portfolio",
+      link: "/portfolio",
     },
     {
       name: "Analytics",
@@ -44,7 +45,7 @@ export default function NavbarHeader() {
           <NavbarLogo />
           <NavItems items={navItems} />
           <div className="flex items-center gap-1">
-            <SimpleWalletConnect />
+            <WalletConnect />
             <NavbarButton variant="primary" className="animated-gradient glow-hover whitespace-nowrap">Launch</NavbarButton>
           </div>
         </NavBody>
@@ -64,18 +65,18 @@ export default function NavbarHeader() {
             className="glass border border-border/50"
           >
             {navItems.map((item, idx) => (
-              <a
+              <Link
                 key={`mobile-link-${idx}`}
                 href={item.link}
                 onClick={() => setIsMobileMenuOpen(false)}
                 className="relative text-muted-foreground hover:text-foreground transition-colors glow-hover"
               >
                 <span className="block">{item.name}</span>
-              </a>
+              </Link>
             ))}
             <div className="flex w-full flex-col gap-4">
               <div className="w-full">
-                <SimpleWalletConnect />
+                <WalletConnect />
               </div>
               <NavbarButton
                 onClick={() => setIsMobileMenuOpen(false)}

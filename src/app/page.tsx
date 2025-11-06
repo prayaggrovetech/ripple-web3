@@ -9,6 +9,7 @@ import { InvestSection } from "@/components/InvestSection";
 import { BecomeInvestorSection } from "@/components/BecomeInvestorSection";
 import { Footer } from "@/components/Footer";
 import { ThemeShowcase } from "@/components/ThemeShowcase";
+import { PortfolioPreview } from "@/components/PortfolioPreview";
 import NavbarHeader from "@/components/ui/resizable-navbar-demo";
 import { motion, Variants } from "framer-motion";
 import { useEffect, useState, useRef } from "react";
@@ -36,7 +37,7 @@ export default function Home() {
       setScrollProgress(progress);
 
       // Determine active section for ruler glow
-      const sections = ['hero', 'features', 'investing', 'steps', 'achievements', 'charts', 'invest', 'community'];
+      const sections = ['hero', 'features', 'portfolio', 'investing', 'steps', 'achievements', 'charts', 'invest', 'community'];
       const sectionElements = sections.map(id => document.getElementById(id));
       
       let currentSection = 'hero';
@@ -344,6 +345,26 @@ export default function Home() {
           id="features"
         >
           <ThemeShowcase />
+        </motion.div>
+
+        <motion.div
+          className="py-20 flex justify-center"
+          variants={modernDividerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-50px" }}
+        >
+          <div className="w-8 h-px bg-border/15" />
+        </motion.div>
+
+        <motion.div
+          variants={modernSectionVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-50px" }}
+          id="portfolio"
+        >
+          <PortfolioPreview />
         </motion.div>
 
         <motion.div

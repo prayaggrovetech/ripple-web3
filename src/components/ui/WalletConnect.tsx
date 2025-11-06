@@ -2,8 +2,28 @@
 
 import { ConnectButton } from '@rainbow-me/rainbowkit';
 import { Button } from '@/components/ui/button';
+import { useEffect, useState } from 'react';
 
 export function WalletConnect() {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  // Prevent SSR issues by not rendering until mounted
+  if (!mounted) {
+    return (
+      <Button
+        variant="secondary"
+        className="glow-hover whitespace-nowrap"
+        disabled
+      >
+        Connect
+      </Button>
+    );
+  }
+
   return (
     <ConnectButton.Custom>
       {({
@@ -13,11 +33,11 @@ export function WalletConnect() {
         openChainModal,
         openConnectModal,
         authenticationStatus,
-        mounted,
+        mounted: rainbowMounted,
       }) => {
         // Note: If your app doesn't use authentication, you
         // can remove all 'authenticationStatus' checks
-        const ready = mounted && authenticationStatus !== 'loading';
+        const ready = rainbowMounted && authenticationStatus !== 'loading';
         const connected =
           ready &&
           account &&

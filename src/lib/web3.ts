@@ -20,7 +20,7 @@ export const config = getDefaultConfig({
     optimism,
     arbitrum,
     base,
-    ...(process.env.NODE_ENV === 'development' ? [sepolia] : []),
+    sepolia, // Always include Sepolia for testing
   ],
   ssr: true,
 });

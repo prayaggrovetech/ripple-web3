@@ -9,6 +9,7 @@ import {
   useMotionValueEvent,
 } from "motion/react";
 import React, { useRef, useState } from "react";
+import Link from "next/link";
 
 interface NavbarProps {
   children: React.ReactNode;
@@ -145,26 +146,54 @@ export const NavItems = ({ items, className, onItemClick, visible }: NavItemsPro
         className
       )}
     >
-      {items.map((item, idx) => (
-        <a
-          onMouseEnter={() => setHovered(idx)}
-          onClick={onItemClick}
-          className={cn(
-            "relative text-neutral-600 dark:text-neutral-300 transition-all duration-200 whitespace-nowrap",
-            visible ? "px-1.5 py-1 text-xs" : "px-4 py-2 text-sm"
-          )}
-          key={`link-${idx}`}
-          href={item.link}
-        >
-          {hovered === idx && (
-            <motion.div
-              layoutId="hovered"
-              className="absolute inset-0 h-full w-full rounded-full bg-gray-100 dark:bg-neutral-800"
-            />
-          )}
-          <span className="relative z-20">{item.name}</span>
-        </a>
-      ))}
+      {items.map((item, idx) => {
+        // Use Link for internal routes, regular anchor for hash links
+        const isInternalRoute = item.link.startsWith('/');
+        
+        if (isInternalRoute) {
+          return (
+            <Link
+              key={`link-${idx}`}
+              onMouseEnter={() => setHovered(idx)}
+              onClick={onItemClick}
+              className={cn(
+                "relative text-neutral-600 dark:text-neutral-300 transition-all duration-200 whitespace-nowrap",
+                visible ? "px-1.5 py-1 text-xs" : "px-4 py-2 text-sm"
+              )}
+              href={item.link}
+            >
+              {hovered === idx && (
+                <motion.div
+                  layoutId="hovered"
+                  className="absolute inset-0 h-full w-full rounded-full bg-gray-100 dark:bg-neutral-800"
+                />
+              )}
+              <span className="relative z-20">{item.name}</span>
+            </Link>
+          );
+        }
+        
+        return (
+          <a
+            key={`link-${idx}`}
+            onMouseEnter={() => setHovered(idx)}
+            onClick={onItemClick}
+            className={cn(
+              "relative text-neutral-600 dark:text-neutral-300 transition-all duration-200 whitespace-nowrap",
+              visible ? "px-1.5 py-1 text-xs" : "px-4 py-2 text-sm"
+            )}
+            href={item.link}
+          >
+            {hovered === idx && (
+              <motion.div
+                layoutId="hovered"
+                className="absolute inset-0 h-full w-full rounded-full bg-gray-100 dark:bg-neutral-800"
+              />
+            )}
+            <span className="relative z-20">{item.name}</span>
+          </a>
+        );
+      })}
     </motion.div>
   );
 };
@@ -255,12 +284,12 @@ export const MobileNavToggle = ({
 
 export const NavbarLogo = () => {
   return (
-    <a
-      href="#"
-      className="relative z-20 mr-4 flex items-center space-x-2 px-2 py-1 text-sm font-normal text-black"
+    <Link
+      href="/"
+      className="relative z-20 mr-4 flex items-center space-x-2 px-2 py-1 text-sm font-normal text-black hover:opacity-80 transition-opacity"
     >
       <span className="text-xl font-bold text-black dark:text-white">RIPPLE</span>
-    </a>
+    </Link>
   );
 };
 
